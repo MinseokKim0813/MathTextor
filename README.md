@@ -1,6 +1,6 @@
 # **MathTextor: Humanizing Mathematical Typesetting**
 
-**Author:** Minseok Kim (Computer Science, NYUAD)
+**Author:** Minseok Kim (Computer Science, NYUAD (New York University Abu Dhabi))
 
 **Advisors:** Moumena Chaqfeh (NYUAD), Steven Euijong Whang (KAIST)
 
