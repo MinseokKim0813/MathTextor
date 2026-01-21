@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Math Question Editor</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/mathlive"></script>
+    <!-- <script src="mathlive.js"></script> -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-black dark:bg-gray-900 dark:text-white p-6">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold">Math Question Demo UI</h1>
+    </div>
+
+    <!-- Questions will be inserted here -->
+    <div id="questions" class="space-y-10"></div>
+
+    <!-- App logic -->
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

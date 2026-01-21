@@ -1,0 +1,134 @@
+/* Rule to hide the virtual keyboard toggle */
+math-field::part(virtual-keyboard-toggle) {
+  display: none;
+}
+
+/*
+  A3 Landscape Dimensions: 42.0cm x 29.7cm
+*/
+
+/* This rule tells the browser's print dialog to default to A3 landscape */
+@page {
+  size: A3 landscape;
+  margin: 1in;
+}
+
+/* Styles for viewing on screen */
+@media screen {
+  body {
+    background-color: #e0e0e0;
+  }
+
+  /* Style the main container to look like a sheet of paper */
+  #questions {
+    background-color: white;
+    width: 42cm; /* A3 landscape width */
+    min-height: 29.7cm; /* A3 landscape height */
+    padding: 2cm;
+    margin: 1cm auto;
+    border: 1px solid #d3d3d3;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding is part of the total width/height */
+  }
+
+  /* --- NEW RULE TO STYLE QUESTION BLOCKS ON SCREEN --- */
+  .question-block {
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- CORRECTED TABLE PICKER STYLES (Improved Visibility) --- */
+
+  .table-picker {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #999; /* Slightly darker border for the overall picker */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 5px;
+  }
+
+  .insert-matrix-submenu {
+    --_menu-item-size: 30px; /* Increased size for clearer squares */
+    display: grid;
+    grid-template-columns: repeat(5, var(--_menu-item-size));
+    gap: 1px; /* Consistent gap for uniform "borders" between cells */
+    background-color: #ddd; /* This color acts as the border lines between cells */
+  }
+
+  .insert-matrix-submenu .picker-cell {
+    width: var(--_menu-item-size);
+    height: var(--_menu-item-size);
+    background-color: #fefefe; /* Clearer background for the cells */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Increased font size to match larger squares */
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  /* Class for highlighting the selected grid area */
+  .insert-matrix-submenu .picker-cell.highlight {
+    background-color: #c0d8ff; /* Slightly darker highlight for better contrast */
+  }
+  /* --- Styles for the Table Button Icon --- */
+  .table-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    line-height: 1;
+    padding: 0.6rem 0.75rem !important; /* Adjust padding for the icon */
+  }
+
+  .table-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    width: 2.5em; /* Increased width to match other icons */
+    height: 2.5em; /* Increased height to match other icons */
+  }
+
+  .table-icon-grid > div {
+    background-color: transparent; /* Make the inside of the square see-through */
+    border: 2px solid currentColor; /* Use a 2px border for the outline */
+  }
+} /* End of @media screen */
+
+/* Styles specifically for printing */
+@media print {
+  body,
+  #questions {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background-color: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* This keeps the border on the entire question block */
+  .question-block {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    padding: 1em;
+    page-break-inside: avoid;
+  }
+
+  /* This keeps the border on the answer area */
+  math-field {
+    border: 1px solid #ddd !important;
+    padding: 0.5em;
+  }
+
+  /* --- NEW RULE --- */
+  /* This specifically targets and removes the border from the question problem's math-field */
+  .question-block math-field.pointer-events-none {
+    border: none !important;
+    padding: 0 !important; /* Also remove padding to align it correctly */
+  }
+}
